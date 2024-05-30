@@ -28,7 +28,6 @@ const elementsToChange = [
   // backBtn
 ];
 
-console.log(elementsToChange);
 fetchData();
 
 async function fetchData() {
@@ -96,6 +95,7 @@ function filterCountriesByRegion(data) {
         return country.region === filterValue;
       });
       getCountriesToDisplay(filteredCountries);
+      filterValue === "all" && getCountriesToDisplay(data);
     });
 }
 

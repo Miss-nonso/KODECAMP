@@ -21,6 +21,10 @@ a {
   color: black;
 }
 
+.text-white {
+  color: var(--white);
+}
+
 .dark-mode-bg {
   background-color: var(--darkBlueBg);
   color: var(--white);

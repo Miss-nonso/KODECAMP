@@ -216,6 +216,7 @@ function changePageDisplay() {
         themeBtns[0].classList.add("display-none");
         themeBtns[1].classList.remove("display-none");
         themeBtns[1].classList.add("display-flex");
+        element.classList.add("text-white");
       })
     : elementsToChange.forEach((element) => {
         element && element.classList.remove("dark-mode-el");

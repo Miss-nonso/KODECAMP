@@ -67,7 +67,7 @@ function displayRegion(regionList) {
 function displayCountries(data) {
   data.map((country) => {
     displayAllCountries &&
-      (displayAllCountries.innerHTML += `  <a href="/restCountriesProject/display-country.html?country-code=${
+      (displayAllCountries.innerHTML += `  <a href="../restCountriesProject/display-country.html?country-code=${
         country.cca2
       }">
         <div class="eachCountry">

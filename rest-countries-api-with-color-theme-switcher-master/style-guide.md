@@ -25,7 +25,7 @@ The designs were created to the following widths:
 ### Body Copy
 
 - Homepage Items: 14px
-- Detail Page: 16px 
+- Detail Page: 16px
 
 ### Fonts
 
@@ -43,3 +43,17 @@ Some suggestions can be found below:
 - [Ionicons](https://ionicons.com)
 
 > 💎 [Upgrade to Pro](https://www.frontendmentor.io/pro?ref=style-guide) for design file access to see all design details and get hands-on experience using a professional workflow with tools like Figma.
+
+…or push an existing repository from the command line
+git remote add origin https://github.com/Miss-nonso/KODECAMP.git
+git branch -M main
+git push -u origin main
+
+…or create a new repository on the command line
+echo "# KODECAMP" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/Miss-nonso/KODECAMP.git
+git push -u origin main

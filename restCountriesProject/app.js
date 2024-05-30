@@ -7,25 +7,38 @@ const allCountries = document.querySelectorAll(".eachCountry");
 const filterByRegion = document.querySelector("#filterByRegion");
 const searchCountries = document.querySelector("#search-country");
 const singleCountryDisplay = document.querySelector("#country-display");
+
 // const themeToggleBtn = document.querySelector("#mode-btn");
 const themeBtns = document.querySelectorAll(".single-mode-btn");
 // const darkModeBtn = document.querySelector("#dark-mode-btn");
 // const lightModeBtn = document.querySelector("#light-mode-btn");
 const header = document.querySelector("#header");
+const btnText = document.querySelectorAll(".btn-text");
 
 const filterWrapper = document.querySelector("#filter-wrapper");
 const searchWrapper = document.querySelector("#search-wrapper");
-const eachCountryDetailsWrapper = document.querySelectorAll(
-  ".eachCountryDetails-wrapper"
-);
-// const backBtn = document.querySelector("#back-btn");
+const backBtn = document.querySelector("#back-btn");
+// const eachCountryDetailsWrapper = document.querySelectorAll(
+//   ".eachCountryDetails-wrapper"
+// );
+
+const navHeader = document.querySelectorAll(".nav-header");
+const changeTextEls = [
+  ...navHeader,
+  searchCountries,
+  filterByRegion,
+  ...btnText,
+  backBtn
+];
+
+console.log({ changeTextEls });
+
 const elementsToChange = [
   header,
   filterWrapper,
   searchWrapper,
   ...themeBtns,
-  ...eachCountryDetailsWrapper
-  // backBtn
+  backBtn
 ];
 
 fetchData();
@@ -73,7 +86,7 @@ function displayCountries(data) {
             <img src="${country.flags.svg}" alt="${
         country.flags.alt ? country.flags.alt : ""
       }" srcset="">
-            <div class="eachCountryDetails-wrapper">
+            <div class="eachCountryDetails-wrapper text-black" >
                 <h6>${country.name.common}</h6>
                 <div class="eachCountry-details">
                     <p><span>Population:</span><span>${country.population.toLocaleString()}</span></p>
@@ -83,6 +96,13 @@ function displayCountries(data) {
             </div>
         </div>
     </a>`);
+
+    const eachCountryDetailsWrapper = document.querySelectorAll(
+      ".eachCountryDetails-wrapper"
+    );
+
+    elementsToChange.push(...eachCountryDetailsWrapper);
+    changeTextEls.push(...eachCountryDetailsWrapper);
   });
 }
 
@@ -110,7 +130,7 @@ function getCountriesToDisplay(filteredData) {
     <img src="${country.flags.svg}" alt="${
         country.flags.alt ? country.flags.alt : ""
       }" srcset="">
-            <div class="eachCountryDetails-wrapper">
+            <div class="eachCountryDetails-wrapper text-black">
                 <h6>${country.name.common}</h6>
                 <div class="eachCountry-details">
                     <p><span>Population:</span><span>${country.population.toLocaleString()}</span></p>
@@ -127,7 +147,7 @@ function getSearchData(data) {
   searchCountries &&
     searchCountries.addEventListener("keyup", (e) => {
       const searchValue = e.target.value;
-      console.log(searchValue);
+
       const filterBySearch = data.filter((country) => {
         return country.name.common.includes(searchValue);
       });
@@ -190,6 +210,8 @@ function displayClickedCountry(countryObj) {
 
       </div>
   </div>`;
+
+  console.log(object);
 }
 
 // TOGGLE
@@ -216,7 +238,7 @@ function changePageDisplay() {
         themeBtns[0].classList.add("display-none");
         themeBtns[1].classList.remove("display-none");
         themeBtns[1].classList.add("display-flex");
-        element.classList.add("text-white");
+        // element.classList.add("text-white");
       })
     : elementsToChange.forEach((element) => {
         element && element.classList.remove("dark-mode-el");
@@ -227,5 +249,15 @@ function changePageDisplay() {
         themeBtns[0].classList.add("display-flex");
         themeBtns[1].classList.remove("display-flex");
         themeBtns[1].classList.add("display-none");
+      });
+
+  !setTheme
+    ? changeTextEls.forEach((element) => {
+        element.classList.remove("text-black");
+        element.classList.add("text-white");
+      })
+    : changeTextEls.forEach((element) => {
+        element.classList.remove("text-white");
+        element.classList.add("text-black");
       });
 }
